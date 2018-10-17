@@ -55,19 +55,22 @@ export default {
     methods:{
         submitForm(formName){
           this.$refs[formName].validate((valid) => {
+          var baseUrl='https://www.easy-mock.com/mock/5bc7014ed85ce204b23a8f4d/vn/user/login';
           if (valid) {
-            // this.$axios.post('/api/users/login',this.loginUser).then(res => {
+            this.$axios.post(baseUrl).then(res => {
                 //获取token
-                //const { tokejwtn } = res.data;
+                const { eletoken } = res.data;
+                console.log(eletoken);
+                console.log("a");
                 //保存到ls
-                //localStorage.setItem('eleToken',token);
+                localStorage.setItem('eleToken',eletoken);
                 //解析token
                 //const decode = jwt_decode(token);
-                
-            // }).catch((err) => {
-                
-            // });
-            this.$router.push('/index');
+                this.$router.push('/index');
+            }).catch((err) => {
+                console.log(err);
+            });
+            
           } else {
             console.log('error submit!!');
             return false;

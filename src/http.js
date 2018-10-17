@@ -12,17 +12,17 @@ function startLoading(){
     });
 }
 function endLoading(){
-    loading = Loading.close();
+    loading.close();
 }
 
 //请求拦截
 axios.interceptors.request.use(config =>{
     //开始加载动画调用
     startLoading();
-    if(localStorage.eleToken){
-        //设置统一的请求头
-        config.headers.Authorization = localStorage.eleToken;
-    }
+    // if(localStorage.eleToken){
+    //     //设置统一的请求头
+    //     config.headers.Authorization = localStorage.eleToken;
+    // }
     return config;
 }, error => {
     return Promise.reject(error);
