@@ -105,8 +105,13 @@ export default {
         submitForm(formName){
           this.$refs[formName].validate((valid) => {
           if (valid) {
-            console.log(this.registerUser.identity);
-            alert('submit!');
+            // this.$axios.post('',this.registerUser).then(res => {
+                
+                
+            // }).catch((err) => {
+                
+            // });
+            this.$router.push('/login')
           } else {
             console.log('error submit!!');
             return false;
