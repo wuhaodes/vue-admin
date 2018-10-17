@@ -58,9 +58,12 @@ export default {
           if (valid) {
             // this.$axios.post('/api/users/login',this.loginUser).then(res => {
                 //获取token
-                //const { token } = res.data;
+                //const { tokejwtn } = res.data;
                 //保存到ls
                 //localStorage.setItem('eleToken',token);
+                //解析token
+                //const decode = jwt_decode(token);
+                
             // }).catch((err) => {
                 
             // });
