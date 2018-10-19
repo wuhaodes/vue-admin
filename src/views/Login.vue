@@ -55,27 +55,41 @@ export default {
     methods:{
         submitForm(formName){
           this.$refs[formName].validate((valid) => {
-          var baseUrl='https://www.easy-mock.com/mock/5bc7014ed85ce204b23a8f4d/vn/user/login';
-          if (valid) {
-            this.$axios.post(baseUrl).then(res => {
-                //获取token
-                const { eletoken } = res.data;
-                console.log(eletoken);
-                console.log("a");
-                //保存到ls
-                localStorage.setItem('eleToken',eletoken);
-                //解析token
-                //const decode = jwt_decode(token);
-                this.$router.push('/index');
-            }).catch((err) => {
-                console.log(err);
+            var baseUrl='https://www.easy-mock.com/mock/5bc7014ed85ce204b23a8f4d/vn/user/login';
+            if (valid) {
+                this.$axios.post(baseUrl).then(res => {
+                    //获取token
+                    const { eletoken } = res.data;
+                    console.log(eletoken);
+                    //保存到ls
+                    localStorage.setItem('eleToken',eletoken);
+                    //解析token
+                    //const decode = jwt_decode(token);
+                    //将token存储到vuex中
+                    var userInfo = eletoken.split("_");
+                    var user = {
+                        name: userInfo[0],
+                        email: this.loginUser.email,
+                        password: this.loginUser.password,
+                        avatar: "../assets/logo.png"
+                    }
+                    this.$store.dispatch("setUser",user);
+                    this.$store.dispatch("setAutheticated",!this.isEmpty(eletoken));
+                    this.$router.push('/index');
+                });
+            } else {
+                console.log('error submit!!');
+                return false;
+            }
             });
-            
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
+        },
+        isEmpty(value){
+            return (
+                value === undefined ||
+                value === null ||
+                (typeof value === "object" && Object.keys(value).length === 0)||
+                (typeof value === "string" && value.trim().length === 0)
+            );
         }
     },
     computed:{

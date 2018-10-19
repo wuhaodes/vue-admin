@@ -59,7 +59,8 @@ export default {
                 email: "",
                 password: "",
                 password2: "",
-                identity: "employee"
+                identity: "employee",
+                avatar: "../assets/logo.png"
             },
             rules: {
                 name: [
@@ -103,17 +104,17 @@ export default {
     },
     methods:{
         submitForm(formName){
+          var baseUrl='https://www.easy-mock.com/mock/5bc7014ed85ce204b23a8f4d/vn/user/register';
           this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$axios.post('',this.registerUser).then(res => {
-                
-            }).catch((err) => {
-                
+            this.$axios.post(baseUrl,this.registerUser).then(res => {
+                this.$message({
+                    message: '注册成功!',
+                    type:'success'
+                });
             });
-            this.$router.push('/login')
-          } else {
-            console.log('error submit!!');
-            return false;
+            this.$store.dispatch("setUser",this.registerUser);
+            this.$router.push('/login');
           }
         });
         }

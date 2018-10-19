@@ -19,10 +19,10 @@ function endLoading(){
 axios.interceptors.request.use(config =>{
     //开始加载动画调用
     startLoading();
-    // if(localStorage.eleToken){
-    //     //设置统一的请求头
-    //     config.headers.Authorization = localStorage.eleToken;
-    // }
+    if(localStorage.eleToken){
+        //设置统一的请求头
+        config.headers.Authorization = localStorage.eleToken;
+    }
     return config;
 }, error => {
     return Promise.reject(error);
@@ -36,12 +36,12 @@ axios.interceptors.response.use(response => {
     //结束加载动画调用
     endLoading();
     Message.error(error.response.data);
-    // const { status } = error.response;
-    // if(status == 401){//token过期处理
-    //     Message.error('token失效，请重新登录');
-    //     localStorage.removeItem('eleToken');
-    //     router.push('/login');
-    // }
+    const { status } = error.response;
+    if(status == 401){//token过期处理
+        Message.error('token失效，请重新登录');
+        localStorage.removeItem('eleToken');
+        router.push('/login');
+    }
     return Promise.reject(error);
 })
 
