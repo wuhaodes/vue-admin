@@ -5,12 +5,12 @@
 </template>
 
 
-// <script>
-// export default {
-//     name: '404',
-//     components: {}
-// };
-// </script>
+<script>
+export default {
+    name: '404',
+    components: {}
+};
+</script>
 
 <style scoped>
 .notfound{

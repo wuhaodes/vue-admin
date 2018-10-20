@@ -17,11 +17,11 @@
                                 <i :class="'iconfont '+item.icon"></i>
                                 <span slot="title">{{item.name}}</span>
                             </template>
-                            <route-link v-for="(citem,cindex) in item.children" :to="citem.path" :key="cindex">
+                            <router-link v-for="(citem,cindex) in item.children" :to="citem.path" :key="cindex">
                                 <el-menu-item :index="citem.path">
                                     <span slot="title">{{citem.name}}</span>
                                 </el-menu-item>
-                            </route-link>
+                            </router-link>
                         </el-submenu>
                     </template>
                 </router-link>
@@ -60,12 +60,13 @@ export default {
    margin-top: 60px;
    position: fixed;
    width: 200px;
+   /* min-height: 600px; */
 }
 .el-menu-vertical-demo{
-    min-height: 595px;
+    min-height: 615px;
 }
 .el-menu{
-    border-right: 0px solid #324057;
+    border:none;
 }
 .el-menu-item i,.el-submenu i{
     font-size: 20px;

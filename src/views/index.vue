@@ -2,7 +2,10 @@
     <div class="index">
         <header-nav></header-nav>
         <left-menu></left-menu>
-        <router-view></router-view>
+        <div class="right-container">
+            <router-view></router-view>
+        </div>
+        
     </div>
 </template>
 
@@ -23,6 +26,13 @@ export default {
     width: 100%;
     height: 100%;
     overflow: hidden;
+}
+.right-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 60px;
+    left: 200px;
 }
 </style>
 

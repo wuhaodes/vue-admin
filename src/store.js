@@ -16,7 +16,7 @@ const state = {
 }
 const getters = {
   isAutheticated: state => state.isAutheticated,
-  user: state => state.user
+  user: state => state.user,
 }
 const mutations = {
   [types.SET_AUTHENTICATED](state,isAutheticated){

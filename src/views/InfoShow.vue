@@ -33,6 +33,7 @@ export default {
 .infoshow{
     width: 100%;
     height: 100%;
+    margin-top:10px;
     box-sizing: border-box;
 }
 .row-bg{
