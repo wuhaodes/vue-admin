@@ -108,12 +108,18 @@ export default {
           this.$refs[formName].validate((valid) => {
           if (valid) {
             this.$axios.post(baseUrl,this.registerUser).then(res => {
-                this.$message({
-                    message: '注册成功!',
-                    type:'success'
-                });
+                const { status } = res.data;
+                if(status === "success"){
+                    this.$message({
+                        message: '注册成功!',
+                        type:'success'
+                    });
+                }
+                else{
+                  this.$message.error("注册失败");  
+                }
+                
             });
-            this.$store.dispatch("setUser",this.registerUser);
             this.$router.push('/login');
           }
         });
