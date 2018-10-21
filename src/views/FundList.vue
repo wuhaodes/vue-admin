@@ -15,11 +15,11 @@
             </el-button>
         </div>
         <div class="add-div">
-            <el-form :inline="true" ref="add_data">
+            <el-form ref="add_data">
                 <el-form-item class="btn-right">
                     <el-button
                      type="primary"
-                     size="medium" 
+                     size="small" 
                      icon="view" 
                      @click="handleAdd()">
                         添加
@@ -290,7 +290,7 @@ export default {
 
 <style scoped>
 .fill-container{
-    width: 85%;
+    width: 90%;
     height: 100%;
     padding-top: 15px;
     padding-left: 5px;
@@ -298,16 +298,17 @@ export default {
     overflow: hidden;
 }
 .add-div{
+    height: 50px;
+    position: fixed;
+    right: 0px;
+    top: 75px;
     width: 100px;
-    height: 30px;
-    border: 1px solid black;
-    overflow: hidden;
-    text-align: center;
-    float: right;
+    z-index: 1;
 }
 .btn-right{
-    float: left;
+    position: relative;
 }
+
 .deleteDialog{
     text-align: left;
 }
@@ -316,16 +317,20 @@ export default {
     margin: 10px;
 }
 .search-view{
+    position: relative;
     width: 30%;
-    display: inline-block;
     text-align: left;
+    left: 10px;
+    padding: 5px;
 }
-.el-input{   
-    width: 50%;
+.search-view .el-input{   
+    width: 100%;
 }
-.el-button{
-    left: 15%;
+.search-view .el-button{
+    position: absolute;
+    left: 100%;
     width: 15%;
+    display: inline-block;
 }
 </style>
 
