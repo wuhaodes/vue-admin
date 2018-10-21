@@ -60,7 +60,7 @@ export default {
    margin-top: 60px;
    position: fixed;
    width: 200px;
-   /* min-height: 600px; */
+   min-height: 600px;
 }
 .el-menu-vertical-demo{
     min-height: 615px;
