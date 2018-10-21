@@ -160,7 +160,6 @@ export default {
     name: 'fundlist',
     data(){
         return {
-            allTableData: [],
             tableData: [],
             dialog: {
                 show: false,
@@ -200,7 +199,7 @@ export default {
             .then(res => {
                 const { fundlist } = res.data;
                 const funddata = JSON.parse(fundlist);
-                this.allTableData = funddata;
+                this.tableData = funddata;
                 //设置分页数据
                 this.setPagination();
             })
@@ -209,7 +208,7 @@ export default {
         handleEdit(index, row){
             this.dialog.show = true;
             this.dialog.dialogTitle = "修改";
-            const editData = this.allTableData[index];
+            const editData = this.tableData[index];
             this.formData = JSON.parse(JSON.stringify(editData));
         },
         handleDelete(index, row){
@@ -225,7 +224,7 @@ export default {
             if(this.formData.id!==""){
                 const date = this.$moment().format('YYYY-MM-DD');
                 this.formData.date = date;
-                this.allTableData.splice(parseInt(this.formData.id)-1,1,JSON.parse(JSON.stringify(this.formData)));
+                this.tableData.splice(parseInt(this.formData.id)-1,1,JSON.parse(JSON.stringify(this.formData)));
                 this.$message({
                     message: '修改成功!',
                     type:'success'
@@ -233,10 +232,10 @@ export default {
                 
             }
             else{
-                this.formData.id = this.allTableData.length + 1 + "";
+                this.formData.id = this.tableData.length + 1 + "";
                 const date = this.$moment().format('YYYY-MM-DD');
                 this.formData.date = date;
-                this.allTableData.push(JSON.parse(JSON.stringify(this.formData)));
+                this.tableData.push(JSON.parse(JSON.stringify(this.formData)));
                 this.$message({
                     message: '添加成功!',
                     type:'success'
@@ -248,7 +247,7 @@ export default {
             
         },
         handleClose(){
-            if(this.deleteRowIndex!=-1)this.allTableData.splice(this.deleteRowIndex,1);
+            if(this.deleteRowIndex!=-1)this.tableData.splice(this.deleteRowIndex,1);
             this.deleteRowIndex = -1;
             this.dialogVisible = false;
             this.$message({
@@ -259,8 +258,8 @@ export default {
         handleSizeChange(pageSize){
             // this.pagination.currentPage = 1;
             // this.pagination.pageSize = pageSize;
-            // console.log(this.allTableData.length);
-            // this.tableData = this.allTableData.filter((item,index)=>{
+            // console.log(this.tableData.length);
+            // this.tableData = this.tableData.filter((item,index)=>{
             //     return index < this.pagination.pageSize;
             // });
         },
@@ -268,16 +267,16 @@ export default {
 
         },
         setPagination(){
-            //分页属性设置
-            this.pagination.total = this.allTableData.length;
-            //设置当前页数
-            this.pagination.currentPage = 1;
-            //设置一页显示多少条
-            this.pagination.pageSize = 5;
-            //设置分页数据
-            this.tableData = this.allTableData.filter((item,index)=>{
-                return index < this.pagination.pageSize;
-            });
+            // //分页属性设置
+            // this.pagination.total = this.tableData.length;
+            // //设置当前页数
+            // this.pagination.currentPage = 1;
+            // //设置一页显示多少条
+            // this.pagination.pageSize = 5;
+            // //设置分页数据
+            // this.tableData = this.tableData.filter((item,index)=>{
+            //     return index < this.pagination.pageSize;
+            // });
         },
         handleSearch(){
 
