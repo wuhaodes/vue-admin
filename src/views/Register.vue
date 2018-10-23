@@ -18,7 +18,7 @@
                             <el-input type="password" v-model="registerUser.password2" placeholder="请确认密码"></el-input>
                         </el-form-item>
                         <el-form-item label="选择身份">
-                            <el-select v-model="registerUser.identity" placeholder="请选择身份">
+                            <el-select v-model="registerUser.identity" placeholder="请选择身份" class="type_select">
                                 <el-option label="管理员" value="manager"></el-option>
                                 <el-option label="员工" value="employee"></el-option>
                             </el-select>
@@ -167,12 +167,15 @@ html
 .register_form {
     margin-top: 20px;
     background-color: #fff;
-    padding: 20px 40px 20px 20px;
+    padding: 40px 40px 20px 20px;
     border-radius: 5px;
     box-shadow: 0px 5px 10px #cccc;
 }
 .submit_btn{
     width: 100%;
+}
+.type_select{
+    width: 230px;
 }
 </style>
 

@@ -134,7 +134,7 @@ html
 .login_form {
     margin-top: 20px;
     background-color: #fff;
-    padding: 20px 50px 20px 0px;
+    padding: 35px 60px 20px 0px;
     border-radius: 5px;
     box-shadow: 0px 5px 10px #cccc;
 }
