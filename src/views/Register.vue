@@ -109,18 +109,19 @@ export default {
           if (valid) {
             this.$axios.post(baseUrl,this.registerUser).then(res => {
                 const { status } = res.data;
-                if(status === "success"){
+                if(status === "sucess"){
                     this.$message({
                         message: '注册成功!',
                         type:'success'
                     });
+                    this.$router.push('/login');
                 }
                 else{
-                  this.$message.error("注册失败");  
+                  this.$message.error("注册失败"); 
                 }
                 
             });
-            this.$router.push('/login');
+            
           }
         });
         }
