@@ -57,13 +57,12 @@ export default {
 
 <style scoped>
 .tac{
-   margin-top: 60px;
    position: fixed;
+   top: 70px;
    width: 200px;
-   min-height: 600px;
 }
 .el-menu-vertical-demo{
-    min-height: 615px;
+    min-height: 700px;
 }
 .el-menu{
     border:none;

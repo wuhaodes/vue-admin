@@ -313,7 +313,9 @@ export default {
 }
 .pagination{
     text-align: right;
-    margin: 10px;
+}
+.el-pagination{
+    margin-right: 70px;
 }
 .search-view{
     position: relative;
